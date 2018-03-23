@@ -55,7 +55,8 @@
 			if (this.refs.authorName.value !== "") {
 			var myUser = {
 				author: this.refs.authorName.value,
-				message: this.refs.messageInput.value
+				message: this.refs.messageInput.value,
+				timeStamp: new Date().toLocaleTimeString()
 			};
 
 			var myKey = usersRef.push().key;

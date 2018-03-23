@@ -1,6 +1,6 @@
 <message>
 
-	<h4>{ msg.author }: <span>{ msg.message }</span></h4>
+	<h4>{ msg.author }: <span>{ msg.message } {msg.timeStamp}</span></h4>
 
 	<script>
 		var that = this;
