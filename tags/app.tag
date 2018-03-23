@@ -3,8 +3,7 @@
 	<h1>Welcome to Secret Chat!</h1>
 
 <div class="author name">
-	<input type="text" name="author name" value="">
-		<button type="button" name="button" onclick= { saveName }> Save Name</button>
+
 </div>
 
 
@@ -13,8 +12,10 @@
 		<message each={ msg in chatLog }></message>
 	</div>
 
-	<input type="text" ref="messageInput" onkeypress={ sendMsg } placeholder="Enter Message">
-	<button type="button" onclick={ sendMsg }>SEND</button>
+	<input type="text" placeholder="Enter your name here" ref="authorName">
+	<button type="button" name="button" onclick={ saveUser }> Save Name</button>
+	<input type="text" ref="messageInput" onkeypress={ saveUser } placeholder="Enter Message">
+	<button type="button" onclick={ saveUser }>SEND</button>
 
 <!-- two elements have the same event, but with different event listeners -->
 
@@ -41,25 +42,64 @@
 			that.update();
 		});
 
-		sendMsg(e) {
-			if (e.type == "keypress" && e.key !== "Enter") {
-				e.preventUpdate = true; // Prevents riot from auto update.
-				return false; // Short-circuits function (function exits here, does not continue.)
-				console.log('keypress');//only excute if commenting out "return false"
-			}
-			//Q2: but if we delete onkeypress eventlistner, it won't update neither
-			if (this.refs.messageInput.value !== "") {
 
-				var msg = {
-					message: this.refs.messageInput.value
+		saveUser(e) {
+
+			if (e.type == "keypress" && e.key !== "Enter") {
+					e.preventUpdate = true; // Prevents riot from auto update.
+					return false; // Short-circuits function (function exits here, does not continue.)
+					console.log('keypress');//only excute if commenting out "return false"
 				}
 
-				usersRef.push(msg); //if you use "set", then it replaces everything in the database
-				// messagesRef.child('/a').set(msg); manually add child tag, not possible for twitter
+			if (this.refs.authorName.value !== "") {
+			var myUser = {
+				author: this.refs.authorName.value,
+				msg: this.refs.messageInput.value
+			};
 
+			var myKey = usersRef.push().key;
 
-			}
+			usersRef.push(myUser);
 
+			that.update();
+
+}
+		// saveName(e) {
+		// 	if (e.type == "keypress" && e.key !== "Enter") {
+		// 		e.preventUpdate = true; // Prevents riot from auto update.
+		// 		return false; // Short-circuits function (function exits here, does not continue.)
+		// 		console.log('keypress');//only excute if commenting out "return false"
+		// 	}
+		//
+		// 	if (this.refs.authorName.value !== "") {
+		//
+		// 		var authorNme = {
+		// 			name: this.refs.authorName.value
+		// 		}
+		//
+		// 		usersRef.push(authorNme);
+		//
+		// 	}
+		//
+		// };
+		//
+		// sendMsg(e) {
+		// 	if (e.type == "keypress" && e.key !== "Enter") {
+		// 		e.preventUpdate = true; // Prevents riot from auto update.
+		// 		return false; // Short-circuits function (function exits here, does not continue.)
+		// 		console.log('keypress');//only excute if commenting out "return false"
+		// 	}
+		// 	//Q2: but if we delete onkeypress eventlistner, it won't update neither
+		// 	if (this.refs.messageInput.value !== "") {
+		//
+		// 		var msg = {
+		// 			message: this.refs.messageInput.value
+		// 		}
+		//
+		// 		usersRef.push().key.push(msg); //if you use "set", then it replaces everything in the database
+		// 		// messagesRef.child('/a').set(msg); manually add child tag, not possible for twitter
+		//
+		// 	};
 			//原来没有database的时候，通过这个codes来sendMsg
 			//没问题
 			// var msg = {
@@ -69,7 +109,7 @@
 
 
 			this.clearInput(); //call clearInput function
-		}
+		};
 
 		this.on('update', function() {
 			console.log('update was called');
