@@ -1,6 +1,12 @@
 <app>
 
-	<h1>Welcome to MSTU Chat!</h1>
+	<h1>Welcome to Secret Chat!</h1>
+
+<div class="author name">
+	<input type="text" name="author name" value="">
+		<button type="button" name="button" onclick= { saveName }> Save Name</button>
+</div>
+
 
 	<div class="chatLog" ref="chatLog">
 		<!-- Messages go here: -->
@@ -23,7 +29,7 @@
 //Here - fetch data from the database
 //In here, I'll set chatLog to the db data
 
-		messagesRef.on('value', function(snapshot) {
+		usersRef.on('value', function(snapshot) {
 			var data = snapshot.val();
 
 			that.chatLog = [];//如果没有这行，所有东西都会redundant
@@ -48,13 +54,14 @@
 					message: this.refs.messageInput.value
 				}
 
-				messagesRef.push(msg); //if you use "set", then it replaces everything in the database
+				usersRef.push(msg); //if you use "set", then it replaces everything in the database
 				// messagesRef.child('/a').set(msg); manually add child tag, not possible for twitter
 
 
 			}
 
 			//原来没有database的时候，通过这个codes来sendMsg
+			//没问题
 			// var msg = {
 			// 	message: this.refs.messageInput.value
 			// };
@@ -75,6 +82,9 @@
 			this.refs.messageInput.focus();
 		}
 	</script>
+
+
+
 
 	<style>
 		:scope {
