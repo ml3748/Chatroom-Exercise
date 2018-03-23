@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>MSTU CHAT!</title>
+</head>
+<body>
+	<app></app>
+
+	<script src="tags/app.tag" type="riot/tag"></script>
+	<script src="tags/message.tag" type="riot/tag"></script>
+
+	<!-- I saved the libraries locally, so as not to hit the CDN fetch limit during testing. -->
+	<script src="js/riot+compiler.js"></script>
+	<script src="js/firebase.js"></script>
+	<!-- <script src="js/utilities.js"></script> -->
+
+ <script>
+   // Initialize Firebase
+   var config = {
+     apiKey: "AIzaSyATnC0jOYRRDrUVF_Kl4e7tPH4x8jqTsXE",
+     authDomain: "chatroom-exercise.firebaseapp.com",
+     databaseURL: "https://chatroom-exercise.firebaseio.com",
+     projectId: "chatroom-exercise",
+     storageBucket: "chatroom-exercise.appspot.com",
+     messagingSenderId: "151295329372"
+   };
+   firebase.initializeApp(config);
+
+		// Global Cached -> Most useful Firebase refs accessible anywhere.
+		// HERE
+		var database = firebase.database();
+		var messagesRef = database.ref('/messages');
+
+		// Initialize Riot
+		riot.mount('*');
+
+	</script>
+</body>
+</html>
