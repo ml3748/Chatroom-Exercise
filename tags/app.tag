@@ -13,7 +13,6 @@
 	</div>
 
 	<input type="text" placeholder="Enter your name here" ref="authorName">
-	<button type="button" name="button" onclick={ saveUser }> Save Name</button>
 	<input type="text" ref="messageInput" onkeypress={ saveUser } placeholder="Enter Message">
 	<button type="button" onclick={ saveUser }>SEND</button>
 
@@ -35,8 +34,8 @@
 
 			that.chatLog = [];//如果没有这行，所有东西都会redundant
 
-			for (key in data) {
-				that.chatLog.push(data[key]);
+			for (Key in data) {
+				that.chatLog.push(data[Key]);
 			}
 
 			that.update();
@@ -59,7 +58,7 @@
 
 			var myKey = usersRef.push().key;
 
-			usersRef.push(myUser);
+			usersRef.child(myKey).set(myUser);
 
 			that.update();
 
