@@ -1,6 +1,6 @@
 <message>
 
-	<span>{ msg.message }</span>
+	<h4>{ msg.author }: <span>{ msg.message }</span></h4>
 
 	<script>
 		var that = this;
@@ -10,11 +10,14 @@
 	<style>
 		:scope {
 			display: block;
-			border: 1px solid dodgerblue;
-			padding: 0.5em;
 		}
 		:scope:not(:last-child) {
 			margin-bottom: 1em;
+		}
+		span {
+			padding: 0.5em;
+			border: 1px solid black;
+			background-color: lightgray;
 		}
 	</style>
 </message>

@@ -23,7 +23,9 @@
 
 		// Demonstration Data
 		this.chatLog = [
-			{ message: "LOADING DATA" }
+			{ author: "No user",
+				message: "LOADING DATA"
+			}
 		]; //fake data
 
 //Here - fetch data from the database
@@ -53,7 +55,7 @@
 			if (this.refs.authorName.value !== "") {
 			var myUser = {
 				author: this.refs.authorName.value,
-				msg: this.refs.messageInput.value
+				message: this.refs.messageInput.value
 			};
 
 			var myKey = usersRef.push().key;
