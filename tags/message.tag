@@ -1,6 +1,9 @@
 <message>
-
+<div>
 	<h4>{ msg.author }: <span>{ msg.message } - at {msg.timeStamp}</span></h4>
+	<i class="far fa-thumbs-up" onclick={ upvote }></i> <i class="far fa-thumbs-down" onclick={ downvote }></i><i class="far fa-trash-alt" onclick={ delete }></i>
+
+</div>
 
 	<script>
 		var that = this;
