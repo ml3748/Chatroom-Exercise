@@ -50,14 +50,14 @@
 					e.preventUpdate = true; // Prevents riot from auto update.
 					return false; // Short-circuits function (function exits here, does not continue.)
 					console.log('keypress');//only excute if commenting out "return false"
-				}
+			}
 
 			if (this.refs.authorName.value !== "") {
 			var myUser = {
 				author: this.refs.authorName.value,
 				message: this.refs.messageInput.value,
 				timeStamp: new Date().toLocaleTimeString()
-			};
+			}
 
 			var myKey = usersRef.push().key;
 
@@ -65,7 +65,10 @@
 
 			that.update();
 
-}
+			}
+
+			this.clearInput(); //call clearInput function
+		};
 		// saveName(e) {
 		// 	if (e.type == "keypress" && e.key !== "Enter") {
 		// 		e.preventUpdate = true; // Prevents riot from auto update.
@@ -110,8 +113,7 @@
 			// this.chatLog.push(msg);
 
 
-			this.clearInput(); //call clearInput function
-		};
+
 
 		this.on('update', function() {
 			console.log('update was called');
