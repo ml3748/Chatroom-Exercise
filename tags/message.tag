@@ -1,13 +1,27 @@
 <message>
 <div>
-	<h4>{ msg.author }: <span>{ msg.message } - at {msg.timeStamp}</span></h4>
-	<i class="far fa-thumbs-up" onclick={ upvote }></i> <i class="far fa-thumbs-down" onclick={ downvote }></i><i class="far fa-trash-alt" onclick={ delete }></i>
-
+	<h4>{ msg.author }: { msg.message } - at { msg.timeStamp }</h4>
+	<span onclick={ upvote }><i class="far fa-thumbs-up"></i>{ msg.upvoteNum }</span>
+	<span onclick={ downvote }><i class="far fa-thumbs-down"></i>{ msg.downvoteNum }</span>
+	<i class="far fa-trash-alt" onclick={ delete }></i>
 </div>
 
 	<script>
 		var that = this;
-		console.log('message.tag');
+		console.log('message tag');
+
+		this.upvote = function(event) {
+
+			//alert("touch");
+			that.parent.chatLog.upvoteNum++;
+			var newUser = that.parent.myUser;
+			var myKey = usersRef.push().key;
+		  usersRef.child(myKey).set(newUser);
+		}
+
+
+
+
 	</script>
 
 	<style>

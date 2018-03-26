@@ -24,7 +24,10 @@
 		// Demonstration Data
 		this.chatLog = [
 			{ author: "No user",
-				message: "LOADING DATA"
+				message: "LOADING DATA",
+				timeStamp: "Loading",
+			  upvoteNum: "No",
+				downvoteNum: "No"
 			}
 		]; //fake data
 
@@ -56,7 +59,9 @@
 			var myUser = {
 				author: this.refs.authorName.value,
 				message: this.refs.messageInput.value,
-				timeStamp: new Date().toLocaleTimeString()
+				timeStamp: new Date().toLocaleTimeString(),
+				upvoteNum: 0,
+				downvoteNum: 0
 			}
 
 			var myKey = usersRef.push().key;
