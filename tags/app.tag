@@ -2,9 +2,9 @@
 
 	<h1>Welcome to Secret Chat!</h1>
 
-<div class="author name">
+	<div class="author name">
 
-</div>
+	</div>
 
 
 	<div class="chatLog" ref="chatLog">
@@ -30,6 +30,8 @@
 				downvoteNum: "No"
 			}
 		]; //fake data
+
+		this.hideName = true;
 
 //Here - fetch data from the database
 //In here, I'll set chatLog to the db data
@@ -62,7 +64,7 @@
 				timeStamp: new Date().toLocaleTimeString(),
 				upvoteNum: 0,
 				downvoteNum: 0
-			}
+			};
 
 			var myKey = usersRef.push().key;
 
@@ -130,6 +132,7 @@
 			this.refs.messageInput.value = "";
 			this.refs.messageInput.focus();
 		}
+
 	</script>
 
 

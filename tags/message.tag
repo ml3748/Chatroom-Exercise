@@ -1,6 +1,7 @@
 <message>
 <div>
-	<h4>{ msg.author }: { msg.message } - at { msg.timeStamp }</h4>
+	<h4 class="line">{ msg.author }: { msg.message }</h4>
+	<h5>at { msg.timeStamp }</h5>
 	<span onclick={ upvote }><i class="far fa-thumbs-up"></i>{ msg.upvoteNum }</span>
 	<span onclick={ downvote }><i class="far fa-thumbs-down"></i>{ msg.downvoteNum }</span>
 	<span onclick={ delete }><i class="far fa-trash-alt"></i>
@@ -13,12 +14,15 @@
 		this.upvote = function(event) {
 
 			//alert("touch");
-			that.parent.chatLog.upvoteNum++;
-			var newUser = that.parent.myUser;
-			var myKey = usersRef.push().key;
-		  usersRef.child(myKey).set(newUser);
-		}
+			this.msg.upvoteNum++;
+			// var newUser = that.parent.myUser;
+			// var myKey = usersRef.push().key;
+		  // usersRef.child(myKey).set(newUser);
+		};
 
+		this.downvote = function(event) {
+			this.msg.downvoteNum++;
+		};
 
 		// this.deleteMsg = false;
 		//
@@ -52,8 +56,10 @@
 		}
 		span {
 			padding: 0.5em;
-			border: 1px solid black;
-			background-color: lightgray;
+		}
+
+		.line {
+			 margin-bottom: -1em;
 		}
 	</style>
 </message>
