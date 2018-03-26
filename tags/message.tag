@@ -3,7 +3,7 @@
 	<h4>{ msg.author }: { msg.message } - at { msg.timeStamp }</h4>
 	<span onclick={ upvote }><i class="far fa-thumbs-up"></i>{ msg.upvoteNum }</span>
 	<span onclick={ downvote }><i class="far fa-thumbs-down"></i>{ msg.downvoteNum }</span>
-	<i class="far fa-trash-alt" onclick={ delete }></i>
+	<span onclick={ delete }><i class="far fa-trash-alt"></i>
 </div>
 
 	<script>
@@ -18,6 +18,25 @@
 			var myKey = usersRef.push().key;
 		  usersRef.child(myKey).set(newUser);
 		}
+
+
+		// this.deleteMsg = false;
+		//
+		// delete(event) {
+		// 	this.deleteMsg = true;
+		// 	var msgName = usersRef.push().key;
+		// 	usersRef.child(msgName).remove();
+		// 		}
+
+				// this.on('update', function() {
+				// 	if(!this.deleteMsg) {
+				// 		this.refs.chatLog =
+				// 	}
+				// 	that.deleteMsg = false;
+				// })
+				//
+
+
 
 
 
