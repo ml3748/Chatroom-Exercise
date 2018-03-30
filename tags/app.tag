@@ -31,8 +31,6 @@
 			}
 		]; //fake data
 
-		this.hideName = true;
-
 //Here - fetch data from the database
 //In here, I'll set chatLog to the db data
 
@@ -49,7 +47,7 @@
 		});
 
 
-		saveUser(e) {
+		saveUser(e) { //写成function saveUser（）{}；再把this换成that，也不可以，估计因为我们这是一个event handler
 
 			if (e.type == "keypress" && e.key !== "Enter") {
 					e.preventUpdate = true; // Prevents riot from auto update.
@@ -70,7 +68,7 @@
 
 			usersRef.child(myKey).set(myUser);
 
-			that.update();
+			this.update();
 
 			}
 
