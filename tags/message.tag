@@ -9,19 +9,25 @@
 
 	<script>
 		var that = this;
+
 		console.log('message tag');
+
+		var getID = this.msg.id;
+		console.log(getID);
 
 		this.upvote = function(event) {
 
 			//alert("touch");
-			this.msg.upvoteNum++;
-			// var newUser = that.parent.myUser;
-			// var myKey = usersRef.push().key;
-		  // usersRef.child(myKey).set(newUser);
+		  var upvote = this.msg.upvoteNum++ + 1;
+			console.log(upvote);
+			usersRef.child(this.msg.id + '/upvoteNum').set(upvote);
 		};
 
 		this.downvote = function(event) {
 			this.msg.downvoteNum++;
+			var downvote = this.msg.downvoteNum++ + 1;
+			console.log(downvote);
+			usersRef.child(this.msg.id + '/downvoteNum').set(downvote);
 		};
 
 		// this.deleteMsg = false;

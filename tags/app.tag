@@ -56,15 +56,19 @@
 			}
 
 			if (this.refs.authorName.value !== "") {
+
+ 			var myKey = usersRef.push().key;
+
 			var myUser = {
 				author: this.refs.authorName.value,
 				message: this.refs.messageInput.value,
+				id: myKey,
 				timeStamp: new Date().toLocaleTimeString(),
 				upvoteNum: 0,
 				downvoteNum: 0
 			};
 
-			var myKey = usersRef.push().key;
+
 
 			usersRef.child(myKey).set(myUser);
 
