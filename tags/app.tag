@@ -9,11 +9,12 @@
 
 	<div class="chatLog" ref="chatLog">
 		<!-- Messages go here: -->
-		<message each={ msg in chatLog }></message>
+		<message each={ msg in chatLog } currentuser = { currentUser }></message>
 	</div>
 
 	<input type="text" placeholder="Enter your name here" ref="authorName">
 	<input type="text" ref="messageInput" onkeypress={ saveUser } placeholder="Enter Message">
+	<!-- <input type="file" multiple="false" accept="image/*" onchange={ uploadImg }> -->
 	<button type="button" onclick={ saveUser }>SEND</button>
 
 <!-- two elements have the same event, but with different event listeners -->
@@ -30,6 +31,8 @@
 				downvoteNum: "No"
 			}
 		]; //fake data
+
+		this.currentUser = null;
 
 //Here - fetch data from the database
 //In here, I'll set chatLog to the db data
@@ -68,14 +71,13 @@
 				downvoteNum: 0
 			};
 
-
-
 			usersRef.child(myKey).set(myUser);
 
 			this.update();
 
 			}
 
+			this.currentUser = this.refs.authorName.value;
 			this.clearInput(); //call clearInput function
 		};
 		// saveName(e) {
@@ -120,7 +122,6 @@
 			// 	message: this.refs.messageInput.value
 			// };
 			// this.chatLog.push(msg);
-
 
 
 

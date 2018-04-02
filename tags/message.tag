@@ -4,44 +4,39 @@
 	<h5>at { msg.timeStamp }</h5>
 	<span onclick={ upvote }><i class="far fa-thumbs-up"></i>{ msg.upvoteNum }</span>
 	<span onclick={ downvote }><i class="far fa-thumbs-down"></i>{ msg.downvoteNum }</span>
-	<span onclick={ delete }><i class="far fa-trash-alt"></i>
+	<span onclick={ delete } show={ msg.author == opts.currentuser }><i class="far fa-trash-alt"></i>
 </div>
 
 	<script>
+	  console.log('message tag', this);
 		var that = this;
 
 		var getID = this.msg.id;
 		// console.log(getID);
 
-		this.upvote = function(event) {
+		upvote(e) {
 
-			//alert("touch");
-			var upvote = this.msg.upvoteNum++ + 1;
-			// console.log(this.msg.upvoteNum++);
-			usersRef.child(getID + '/upvoteNum').set(upvote);
+			this.msg.upvoteNum++;//I cannot write "var upvote = this.msg.upvoteNum++;" why?
+			// console.log(upvote);
+			//console.log(this.msg.upvoteNum++);
+			usersRef.child(getID + '/upvoteNum').set(this.msg.upvoteNum++);
 		};
 
-		this.downvote = function(event) {
-			var downvote = this.msg.downvoteNum++ + 1;
-			// console.log(downvote);
-			usersRef.child(getID+ '/downvoteNum').set(downvote);
+//two ways to achieve this:
+// 1st. usersRef.child(getID + '/upvoteNum').set(this.msg.upvoteNum++);
+//2nd. var upvote = this.msg.upvoteNum++ + 1;
+//usersRef.child(getID + '/upvoteNum').set(upvote);
+
+
+		downvote(e) {
+		  this.msg.downvoteNum++;
+			usersRef.child(getID+ '/downvoteNum').set(this.msg.downvoteNum++);
 		};
 
-		// this.deleteMsg = false;
-		//
-		// delete(event) {
-		// 	this.deleteMsg = true;
-		// 	var msgName = usersRef.push().key;
-		// 	usersRef.child(msgName).remove();
-		// 		}
 
-				// this.on('update', function() {
-				// 	if(!this.deleteMsg) {
-				// 		this.refs.chatLog =
-				// 	}
-				// 	that.deleteMsg = false;
-				// })
-				//
+		delete(e) {
+		usersRef.child(getID).set(null);
+		};
 
 
 
